@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+//¼öÁ¤
 public class SchoolMain {
 	static List<Student> stuList = new ArrayList<Student>();
 	static List<Professor> proList = new ArrayList<Professor>();
