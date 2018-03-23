@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Student {
-//0323
+//안녕하세요
 	Scanner sc = new Scanner(System.in);
 
 	private String classOf; // 학번
