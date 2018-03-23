@@ -1,28 +1,25 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-
-public class Professor {
-	private String name;
-	private String sex;
-	private String age;
-	private String subject;
-
+//professor DAO
+public class ProfessorDAO {
+	ArrayList<ProfessorDTO> proList = new ArrayList<>();
+	
+	ProfessorDAO(){
+		proList.add(new ProfessorDTO("남진","남","50","수학"));
+		proList.add(new ProfessorDTO("장발산","남","55","과학"));
+		proList.add(new ProfessorDTO("오나미","여","53","영어"));
+		proList.add(new ProfessorDTO("김관진","남","51","체육"));
+		proList.add(new ProfessorDTO("오수미","여","52","컴퓨터"));
+	
+	}
+	
 	Scanner sc = new Scanner(System.in);
 
-	Professor() {
-
-	}
-
-	Professor(String name, String sex, String age, String subject) {
-		this.name = name;
-		this.sex = sex;
-		this.age = age;
-		this.subject = subject;
-
-	}
+	
 
 	void AddProfessor() { // 교수 추가 메소드
 
-		Professor professor = new Professor();
+		ProfessorDAO professor = new ProfessorDAO();
 
 		System.out.print("이름 : ");
 		name = sc.nextLine();
@@ -69,7 +66,7 @@ public class Professor {
 
 	void ModifyProfessor() { // 교수 수정
 
-		Professor professor = new Professor();
+		ProfessorDAO professor = new ProfessorDAO();
 		System.out.println("수정할 교수의 이름 : ");
 		name = sc.nextLine();
 
@@ -124,36 +121,6 @@ public class Professor {
 
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSex() {
-		return sex;
-	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
+	
 
 }
