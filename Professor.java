@@ -1,24 +1,11 @@
 import java.util.Scanner;
 //test
 public class Professor {
-	private String name;
-	private String sex;
-	private String age;
-	private String subject;
+
 
 	Scanner sc = new Scanner(System.in);
 
-	Professor() {
-
-	}
-
-	Professor(String name, String sex, String age, String subject) {
-		this.name = name;
-		this.sex = sex;
-		this.age = age;
-		this.subject = subject;
-
-	}
+	
 
 	void AddProfessor() { // 교수 추가 메소드
 
