@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Student {
-//test	
+//0323
 	Scanner sc = new Scanner(System.in);
 
 	private String classOf; // ÇÐ¹ø
