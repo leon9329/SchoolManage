@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//test
 public class Professor {
 	private String name;
 	private String sex;
