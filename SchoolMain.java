@@ -11,6 +11,8 @@ public class SchoolMain {
 		// TODO Auto-generated method stub
 		SchoolMain main = new SchoolMain();
 		StudentDAO student = new StudentDAO();
+		ProfessorDAO professor = new ProfessorDAO();
+		
 		
 		while (true) {
 			System.out.println("1.切积 包府 2.背荐 包府 3.辆丰 ");
