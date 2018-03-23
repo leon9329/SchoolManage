@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+<<<<<<< HEAD:ProfessorDAO.java
 //professor DAO
 public class ProfessorDAO {
 	ArrayList<ProfessorDTO> proList = new ArrayList<>();
@@ -11,6 +12,19 @@ public class ProfessorDAO {
 		proList.add(new ProfessorDTO("김관진","남","51","체육"));
 		proList.add(new ProfessorDTO("오수미","여","52","컴퓨터"));
 	
+=======
+//test
+public class Professor {
+	private String name;
+	private String sex;
+	private String age;
+	private String subject;
+
+	Scanner sc = new Scanner(System.in);
+
+	Professor() {
+
+>>>>>>> 557f94ebbac2bb7b758772f8ff711ace44d5be16:Professor.java
 	}
 	
 	Scanner sc = new Scanner(System.in);
