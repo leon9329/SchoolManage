@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-<<<<<<< HEAD:ProfessorDAO.java
+
 //professor DAO
 public class ProfessorDAO {
 	ArrayList<ProfessorDTO> proList = new ArrayList<>();
+	Scanner sc = new Scanner(System.in);
 	
 	ProfessorDAO(){
 		proList.add(new ProfessorDTO("남진","남","50","수학"));
@@ -11,66 +12,77 @@ public class ProfessorDAO {
 		proList.add(new ProfessorDTO("오나미","여","53","영어"));
 		proList.add(new ProfessorDTO("김관진","남","51","체육"));
 		proList.add(new ProfessorDTO("오수미","여","52","컴퓨터"));
+		}
 	
-=======
-//test
-public class Professor {
-	private String name;
-	private String sex;
-	private String age;
-	private String subject;
+	void ProfessorBoard() {	//교수 관리
 
-	Scanner sc = new Scanner(System.in);
 
-	Professor() {
+		while (true) {
+			System.out.println("1.교수 추가 2.교수 리스트 3.교수 삭제 4.교수진 수정 5.뒤로");
+			String n = sc.nextLine();
 
->>>>>>> 557f94ebbac2bb7b758772f8ff711ace44d5be16:Professor.java
+			switch (n) {
+			case "1":
+				AddProfessor();
+				break;
+			case "2":
+				System.out.println("이름	성별	나이	전공");
+				System.out.println("------------------------------");
+				for (int i = 0; i < proList.size(); i++) 
+					ShowProfessors(proList.get(i));
+				System.out.println("------------------------------");
+				System.out.println();
+				break;
+			case "3":
+				if (deleteProfessor())
+					System.out.println("삭제 완료");
+				else
+					System.out.println("삭제 실패");
+				break;
+			case "4":
+				CheckProfessor();
+				break;
+			case "5":
+				return;
+			}
+		}
+
 	}
 	
-	Scanner sc = new Scanner(System.in);
 
 	
 
 	void AddProfessor() { // 교수 추가 메소드
 
-		ProfessorDAO professor = new ProfessorDAO();
-
 		System.out.print("이름 : ");
-		name = sc.nextLine();
-		professor.setName(name);
+		String name = sc.nextLine();
 
 		System.out.print("성별 : ");
-		sex = sc.nextLine();
-		professor.setSex(sex);
+		String sex = sc.nextLine();
 
 		System.out.print("나이 : ");
-		age = sc.nextLine();
-		professor.setAge(age);
+		String age = sc.nextLine();
 
 		System.out.print("전공 과목 : ");
-		subject = sc.nextLine();
-		professor.setSubject(subject);
+		String subject = sc.nextLine();
 
-		SchoolMain.proList.add(professor);
+		ProfessorDTO professor = new ProfessorDTO(name,sex,age,subject);
+		proList.add(professor);
 	}
 
-	public void ProfessorInfo() { // 교수 정보 출력
-		System.out.println(name + " " + sex + " " + age + " " + subject);
-	}
 
 	boolean deleteProfessor() { // 교수 삭제 메소드
 
 		System.out.println("삭제할 교수 이름 : ");
-		name = sc.nextLine();
+		String name = sc.nextLine();
 
 		System.out.println("삭제할 교수의 교과목 : ");
-		subject = sc.nextLine();
+		String subject = sc.nextLine();
 
-		for (int i = 0; i < SchoolMain.proList.size(); i++) {
-			System.out.println(SchoolMain.proList.size());
-			if (SchoolMain.proList.get(i).getSubject().equals(subject)
-					&& SchoolMain.proList.get(i).getName().equals(name)) {
-				SchoolMain.proList.remove(i);
+		for (int i = 0; i < proList.size(); i++) {
+			if (proList.get(i).getSubject().equals(subject)
+					&& proList.get(i).getName().equals(name)) {
+				proList.remove(i);
 				return true;
 			}
 
@@ -78,61 +90,64 @@ public class Professor {
 		return false;
 	}
 
-	void ModifyProfessor() { // 교수 수정
-
-		ProfessorDAO professor = new ProfessorDAO();
-		System.out.println("수정할 교수의 이름 : ");
-		name = sc.nextLine();
-
-		for (int i = 0; i < SchoolMain.proList.size(); i++) {
-			professor = SchoolMain.proList.get(i);
-			if (!(professor.name.equals(name))) {
-				System.out.println("해당 이름의 교수가 없습니다.");
-			} else {
-				System.out.println("전공 과목 : ");
-				subject = sc.nextLine();
-				if (!(professor.subject.equals(subject))) {
-					System.out.println("해당 전공의 교수가 없습니다.");
-				} else {
-					System.out.println("무엇을 수정하시겠습니까?");
-					System.out.println("1.이름 2.성별 3.나이 4.전공 과목");
-					String s = sc.nextLine();
-					switch (s) {
-					case "1":
-						System.out.println("새로운 이름: ");
-						name = sc.nextLine();
-						professor.setName(name);
-						System.out.println("수정 완료.");
-						break;
-					case "2":
-						if (professor.sex.equals("남"))
-							professor.setSex("여");
-						else
-							professor.setSex("남");
-						System.out.println("수정 완료.");
-						break;
-					case "3":
-						System.out.println("수정할 나이: ");
-						age = sc.nextLine();
-						professor.setAge(age);
-						System.out.println("수정 완료.");
-						break;
-					case "4":
-
-						System.out.println("새로운 전공: ");
-						subject = sc.nextLine();
-						professor.setSubject(subject);
-						System.out.println("수정 완료.");
-						break;
-					default:
-						System.out.println("1~4번중 선택하세요.");
-
-					}
-				}
+	
+	void CheckProfessor() { // 교수 수정
+		System.out.println("수정할 교수 이름");
+		String name = sc.nextLine();
+		System.out.println("수정할 교수의 교과목");
+		String suject = sc.nextLine();
+		
+		for(int i = 0; i < proList.size(); i++) {
+			ProfessorDTO professor = proList.get(i);
+			if(professor.getName().equals(name) 
+					&& professor.getSubject().equals(suject)) {
+				UpdateProfessor(professor);
+				return;
 			}
+		}
+		System.out.println("교수 이름 또는 과목이 잘못되었습니다.");
+		
+
+	}
+	
+	void UpdateProfessor(ProfessorDTO professor) {
+		System.out.println("무엇을 수정하시겠습니까?");
+		System.out.println("1.이름 2.성별 3.나이 4.전공과목");
+		String s = sc.nextLine();
+		
+		switch (s) {
+		case "1":
+			System.out.println("새로운 이름: ");
+			professor.setName(sc.nextLine());
+			System.out.println("수정 완료.");
+			break;
+		case "2":
+			if (professor.getSex().equals("남"))
+				professor.setSex("여");
+			else
+				professor.setSex("남");
+			System.out.println("수정 완료.");
+			break;
+		case "3":
+			System.out.println("수정할 나이: ");
+			professor.setAge(sc.nextLine());
+			System.out.println("수정 완료.");
+			break;
+		case "4":
+
+			System.out.println("새로운 전공: ");
+			professor.setSubject(sc.nextLine());
+			System.out.println("수정 완료.");
+			break;
+		default:
+			System.out.println("1~4번중 선택하세요.");
 
 		}
-
+	}
+	
+	public void ShowProfessors(ProfessorDTO professor) { // 교수 정보 출력
+		System.out.println(professor.getName()+ "	" + professor.getAge() + "	" 
+				+ professor.getSex() + "	" + professor.getSubject());
 	}
 
 	

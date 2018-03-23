@@ -17,10 +17,7 @@ public class StudentDTO {
 
 	}
 	
-	public void StudentInfo() { // 학생 정보 출력
-		
-		System.out.println(classOf + " " + name + " " + sex + " " + age + " " + privateCourse);
-	}
+	
 
 	public void setClassOf(String classOf) {
 		this.classOf = classOf;

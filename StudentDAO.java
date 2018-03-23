@@ -16,6 +16,40 @@ public class StudentDAO {
 	
 	Scanner sc = new Scanner(System.in);
 	
+	void StudentBoard() {// 학생 관리
+
+		while (true) {
+			System.out.println("1.학생 추가 2.학생 리스트 3.학생 삭제 4.학생 정보 수정 5.뒤로");
+			String n = sc.nextLine();
+
+			switch (n) {
+			case "1":
+				AddStudent();
+				break;
+			case "2":
+				System.out.println("학번	이름	성별	나이	좋아하는과목");
+				System.out.println("------------------------------------------");
+				for (int i = 0; i < stuList.size(); i++) 
+					showStudent(stuList.get(i));
+				System.out.println("------------------------------------------");
+				System.out.println();
+				break;
+			case "3":
+				if (deleteStudent())
+					System.out.println("삭제 완료");
+				else
+					System.out.println("삭제 실패");
+				break;
+			case "4":
+				CheckStudent();
+				break;
+			case "5":
+				return;
+			}
+		}
+
+	}
+	
 
 	void AddStudent() { // 학생 추가 메소드
 
@@ -39,35 +73,7 @@ public class StudentDAO {
 		stuList.add(student);
 	}
 
-	void StudentBoard() {// 학생 관리
-
-		while (true) {
-			System.out.println("1.학생 추가 2.학생 리스트 3.학생 삭제 4.학생 정보 수정 5.뒤로");
-			String n = sc.nextLine();
-
-			switch (n) {
-			case "1":
-				AddStudent();
-				break;
-			case "2":
-				for (int i = 0; i < stuList.size(); i++)
-					stuList.get(i).StudentInfo();
-				break;
-			case "3":
-				if (deleteStudent())
-					System.out.println("삭제 완료");
-				else
-					System.out.println("삭제 실패");
-				break;
-			case "4":
-				CheckStudent();
-				break;
-			case "5":
-				return;
-			}
-		}
-
-	}
+	
 
 	boolean deleteStudent() { // 학생 삭제 메소드
 		System.out.println("삭제할 학생 학번 : ");
@@ -99,10 +105,6 @@ public class StudentDAO {
 				UpdateStudent(student);
 				return;
 			}
-			System.out.println("student.getClassOf = " + student.getClassOf());
-			System.out.println("student.getName = " + student.getName());
-			System.out.println();
-			
 		}
 		System.out.println("학번 또는 이름이 잘못됬습니다.");
 	}
@@ -146,5 +148,10 @@ public class StudentDAO {
 
 		}
 
+	}
+	
+	void showStudent(StudentDTO student) {
+		System.out.println(student.getClassOf() + "	" + student.getName() + "	" 
+				+ student.getSex() + "	" + student.getAge() + "	"  + student.getPrivateCouse());
 	}
 }
