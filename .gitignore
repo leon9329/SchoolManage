@@ -1,7 +1,13 @@
 /Professor.class
 /SchoolMain.class
 /Student.class
+<<<<<<< HEAD
 /StudentDTO.class
 /StudentDAO.class
 /ProfessorDTO.class
 /ProfessorDAO.class
+=======
+/*.class
+/*.project
+/*.classpath
+>>>>>>> fdf4bd6b8050bb2a33dd87badf6e9f4f4e77e0b9
