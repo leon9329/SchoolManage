@@ -1,17 +1,26 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 //Student DAO
-public class StudentDAO {
+public class StudentDAO{
 	ArrayList<StudentDTO> stuList = new ArrayList<StudentDTO>();
+	Set<String> stuID = new HashSet<>();
 	
-	StudentDAO(){
-		stuList.add(new StudentDTO("1","홍길동","남","20","수학"));
-		stuList.add(new StudentDTO("2","정우성","남","26","물리"));
-		stuList.add(new StudentDTO("3","김현아","여","25","과학"));
-		stuList.add(new StudentDTO("4","김지원","여","24","영어"));
-		stuList.add(new StudentDTO("5","황우석","여","23","국어"));
-				
+	
+	StudentDAO(){//디폴트 학생 + id 디폴트 비번 = 1111
+		stuList.add(new StudentDTO("a","1","홍길동","남","20","수학"));
+		stuID.add("a");
+		stuList.add(new StudentDTO("b","2","정우성","남","26","물리"));
+		stuID.add("b");
+		stuList.add(new StudentDTO("c","3","김현아","여","25","과학"));
+		stuID.add("c");
+		stuList.add(new StudentDTO("d","4","김지원","여","24","영어"));
+		stuID.add("d");
+		stuList.add(new StudentDTO("e","5","황우석","여","23","국어"));
+		stuID.add("e");		
 	}
 	
 	Scanner sc = new Scanner(System.in);
@@ -50,9 +59,46 @@ public class StudentDAO {
 
 	}
 	
+	boolean CheckID(String id) {	//로그인시 id확인
+		Iterator<String> iterator = stuID.iterator();
+		while(iterator.hasNext()) {
+			if(id.equals(iterator.next())) {
+				return true;
+			}else
+				return false;
+		}
+		return false;		
+	}
+	
+
+	
+	/*	void SelfUpdateStudent(StudentDTO student) {	//학생 스스로 정보수정
+	System.out.println("무엇을 수정하시겠습니까?");
+	System.out.println("1.학번 2.이름 3.성별 4.나이 5.좋아하는 과목");
+	String n = sc.nextLine();
+	switch (n) {
+	case "1":
+		student.setClassOf(sc.nextLine());
+		break;
+	case "2":
+		student.setName(sc.nextLine());
+		break;
+	case "3":
+		student.setAge(sc.nextLine());
+		break;
+	case "4":
+		student.setPrivateCourse(sc.nextLine());
+		break;
+	default:	
+		System.out.println("1~5번중 선택하세요.");
+		break;
+	}
+	
+}*/
+	
 
 	void AddStudent() { // 학생 추가 메소드
-
+		
 		System.out.print("학번 : ");
 		String classOf = sc.nextLine();
 
@@ -148,29 +194,7 @@ public class StudentDAO {
 
 	}
 	
-/*	void SelfUpdateStudent(StudentDTO student) {	//학생 스스로 정보수정
-		System.out.println("무엇을 수정하시겠습니까?");
-		System.out.println("1.학번 2.이름 3.성별 4.나이 5.좋아하는 과목");
-		String n = sc.nextLine();
-		switch (n) {
-		case "1":
-			student.setClassOf(sc.nextLine());
-			break;
-		case "2":
-			student.setName(sc.nextLine());
-			break;
-		case "3":
-			student.setAge(sc.nextLine());
-			break;
-		case "4":
-			student.setPrivateCourse(sc.nextLine());
-			break;
-		default:	
-			System.out.println("1~5번중 선택하세요.");
-			break;
-		}
-		
-	}*/
+
 	
 	void showStudent(StudentDTO student) {
 		System.out.println(student.getClassOf() + "	" + student.getName() + "	" 

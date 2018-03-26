@@ -5,6 +5,8 @@ public class StudentDTO {
 	private String sex; // 성별
 	private String age; // 나이
 	private String privateCourse; // 좋아하는 과목
+	private String id;
+	private String password = "1111";
 	
 	StudentDTO(){};
 	
@@ -17,7 +19,19 @@ public class StudentDTO {
 
 	}
 	
+	StudentDTO(String id, String classOf, String name, String sex, String age, String privateCourse) {
+		this.id = id;
+		this.classOf = classOf;
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.privateCourse = privateCourse;
+
+	}
 	
+	public void setID(String id) {
+		this.id = id;
+	}
 
 	public void setClassOf(String classOf) {
 		this.classOf = classOf;
@@ -38,7 +52,15 @@ public class StudentDTO {
 	public void setPrivateCourse(String privateCourse) {
 		this.privateCourse = privateCourse;
 	}
+	
+	private void setPassword(String password) {
+		this.password = password;
+	}
 
+	public String getID() {
+		return id;
+	}
+	
 	public String getClassOf() {
 		return classOf;
 	}
@@ -58,4 +80,6 @@ public class StudentDTO {
 	public String getPrivateCouse() {
 		return privateCourse;
 	}
+	
+	
 }

@@ -12,6 +12,7 @@ public class SchoolMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SchoolMain main = new SchoolMain();
+		String id, password;
 		
 		while(true) {	//처음 메인화면
 			System.out.println("1.관리자모드 2.학생모드 3.교수모드 4.종료");
@@ -20,16 +21,22 @@ public class SchoolMain {
 			switch(a) {
 			case "1":
 				System.out.println("관리자 아이디 : ");
-				String id = sc.nextLine();
+				id = sc.nextLine();
 				System.out.println("관리자 비번 : ");
-				String password = sc.nextLine();
+				password = sc.nextLine();
 				if(id.equals(HOST_ID) && password.equals(HOST_PASSWROD))
 					main.ManagerView();
 				else 
 					System.out.println("id or password Error!");
 				break;
 			case "2":
-				break;
+				System.out.println("아이디 : ");
+				id = sc.nextLine();
+				System.out.println("비번 : ");
+				password = sc.nextLine();
+				if(main.student.CheckID(id)) {
+					//아이디는 맞았고 비번 조회할 차례
+				}
 			case "3":
 				break;
 			default:
