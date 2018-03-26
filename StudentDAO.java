@@ -8,7 +8,7 @@ import java.util.Set;
 public class StudentDAO {
 	ArrayList<StudentDTO> stuList = new ArrayList<StudentDTO>();
 	Set<String> stuID = new HashSet<>();
-	int num; //get에서 얻어온 i값 저장
+	int num; // get에서 얻어온 i값 저장
 
 	StudentDAO() {// 디폴트 학생 + id 디폴트 비번 = 1111
 		stuList.add(new StudentDTO("a", "1", "홍길동", "남", "20", "수학"));
@@ -59,6 +59,27 @@ public class StudentDAO {
 
 	}
 
+	void StudentView() {
+		while (true) {
+			System.out.println("1.정보 수정 2.게시판 3.수강신청 4.로그아웃 ");
+			String s = sc.nextLine();
+			switch (s) {
+			case "1":
+				SelfUpdateStudent(stuList.get(num));
+
+				break;
+			case "2":
+				break;
+			case "3":
+				break;
+			case "4":
+				return ;
+			default:
+				System.out.println("1~4번 선택하세요");
+			}
+		}
+	}
+
 	boolean CheckID(String id, String password) { // 로그인시 id, password 확인
 		Iterator<String> iterator = stuID.iterator();
 		while (iterator.hasNext()) {
@@ -80,51 +101,57 @@ public class StudentDAO {
 		return false;
 
 	}
-	
-	void StudentView() {
-		System.out.println("1.정보 수정 2.게시판 3.수강신청 4.로그아웃");
-		String s = sc.nextLine();
-		switch(s) {
-		case "1":
-			SelfUpdateStudent(stuList.get(num));
-			System.out.println("수정 완료");
-			break;
-		case "2":
-			break;
-		case "3":
-			break;
-		case "4":
-			break;
-		default :
-			System.out.println("1~4번 선택하세요");
-		}
-	}
 
 	void SelfUpdateStudent(StudentDTO student) { // 학생 스스로 정보수정
 		System.out.println("무엇을 수정하시겠습니까?");
-		System.out.println("1.학번 2.이름 3.나이 4.좋아하는 과목");
+		System.out.println("1.학번 2.이름 3.나이 4.좋아하는 과목 5.비밀번호 변경");
 		String n = sc.nextLine();
 		switch (n) {
 		case "1":
 			System.out.println("학번 : ");
 			student.setClassOf(sc.nextLine());
+			System.out.println("수정 완료");
 			break;
 		case "2":
 			System.out.println("이름 : ");
 			student.setName(sc.nextLine());
+			System.out.println("수정 완료");
 			break;
 		case "3":
 			System.out.println("나이 : ");
 			student.setAge(sc.nextLine());
+			System.out.println("수정 완료");
 			break;
 		case "4":
 			System.out.println("좋아하는 과목 : ");
 			student.setPrivateCourse(sc.nextLine());
+			System.out.println("수정 완료");
+			break;
+		case "5":
+			ChangePassword(student);
 			break;
 		default:
 			System.out.println("1~4번중 선택하세요.");
 			break;
 		}
+
+	}
+
+	void ChangePassword(StudentDTO student) {
+		System.out.println("현재 비밀번호 : ");
+		String OldPassword = sc.nextLine();
+		if (OldPassword.equals(student.getPassword())) {
+			System.out.println("새 비밀번호 : ");
+			String NewPassword = sc.nextLine();
+			System.out.println("새 비밀번호 확인 : ");
+			if (NewPassword.equals(sc.nextLine())) {
+				student.setPassword(NewPassword);
+				System.out.println("비밀번호 변경완료");
+			} else
+				System.out.println("새 비밀번호가 일치하지 않습니다.");
+
+		} else
+			System.out.println("비밀번호가 틀렸습니다.");
 
 	}
 
