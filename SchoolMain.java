@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 public class SchoolMain {
-
+	static final String HOST_ID = "test";
+	static final String HOST_PASSWROD = "123";
+	
 	StudentDAO student = new StudentDAO();
 	ProfessorDAO professor = new ProfessorDAO();
 
@@ -17,7 +19,14 @@ public class SchoolMain {
 			
 			switch(a) {
 			case "1":
-				main.ManagerView();
+				System.out.println("관리자 아이디 : ");
+				String id = sc.nextLine();
+				System.out.println("관리자 비번 : ");
+				String password = sc.nextLine();
+				if(id.equals(HOST_ID) && password.equals(HOST_PASSWROD))
+					main.ManagerView();
+				else 
+					System.out.println("id or password Error!");
 				break;
 			case "2":
 				break;
@@ -48,32 +57,8 @@ public class SchoolMain {
 		}
 	}
 	
-	void StudentView() {
-		while(true) {
-			System.out.println("1.정보 수정 2.수강 신청 3.게시판 4.로그아웃");
-			String s = sc.nextLine();
-			switch(s) {
-			case "1":
-				
-				break;
-			case "2":
-				
-				break;
-			case "3":
-				
-				break;
-			default:
-				return;
-			
-			
-			}
-		}
-		
-	}
 	
-	void ProfessorView() {
-		
-	}
+
 	
 	
 

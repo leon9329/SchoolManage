@@ -16,7 +16,7 @@ public class StudentDAO {
 	
 	Scanner sc = new Scanner(System.in);
 	
-	void StudentBoard() {// 학생 관리
+	void StudentBoard() {// 관리자가 학생 관리
 
 		while (true) {
 			System.out.println("1.학생 추가 2.학생 리스트 3.학생 삭제 4.학생 정보 수정 5.뒤로");
@@ -147,6 +147,30 @@ public class StudentDAO {
 		}
 
 	}
+	
+/*	void SelfUpdateStudent(StudentDTO student) {	//학생 스스로 정보수정
+		System.out.println("무엇을 수정하시겠습니까?");
+		System.out.println("1.학번 2.이름 3.성별 4.나이 5.좋아하는 과목");
+		String n = sc.nextLine();
+		switch (n) {
+		case "1":
+			student.setClassOf(sc.nextLine());
+			break;
+		case "2":
+			student.setName(sc.nextLine());
+			break;
+		case "3":
+			student.setAge(sc.nextLine());
+			break;
+		case "4":
+			student.setPrivateCourse(sc.nextLine());
+			break;
+		default:	
+			System.out.println("1~5번중 선택하세요.");
+			break;
+		}
+		
+	}*/
 	
 	void showStudent(StudentDTO student) {
 		System.out.println(student.getClassOf() + "	" + student.getName() + "	" 
