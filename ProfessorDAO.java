@@ -66,8 +66,7 @@ public class ProfessorDAO {
 		System.out.print("전공 과목 : ");
 		String subject = sc.nextLine();
 
-		ProfessorDTO professor = new ProfessorDTO(name,sex,age,subject);
-		proList.add(professor);
+		proList.add(new ProfessorDTO(name,sex,age,subject));
 	}
 
 

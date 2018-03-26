@@ -68,9 +68,7 @@ public class StudentDAO {
 		System.out.print("좋아하는 과목 : ");
 		String privateSubject = sc.nextLine();
 
-		StudentDTO student = new StudentDTO(classOf, name, sex, age, privateSubject);
-
-		stuList.add(student);
+		stuList.add(new StudentDTO(classOf, name, sex, age, privateSubject));
 	}
 
 	
