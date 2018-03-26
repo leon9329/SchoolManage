@@ -13,6 +13,9 @@ public class SchoolMain {
 		ProfessorDAO professor = new ProfessorDAO();
 		
 		
+		System.out.println("1.관리자모드 2.학생모드 3.교수모드");
+		String a = sc.nextLine();
+		
 		while (true) {
 			System.out.println("1.학생 관리 2.교수 관리 3.종료 ");
 			String n = sc.nextLine();
