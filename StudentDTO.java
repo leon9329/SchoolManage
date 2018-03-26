@@ -26,6 +26,7 @@ public class StudentDTO {
 		this.sex = sex;
 		this.age = age;
 		this.privateCourse = privateCourse;
+		
 
 	}
 	
@@ -79,6 +80,10 @@ public class StudentDTO {
 
 	public String getPrivateCouse() {
 		return privateCourse;
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 	
 	

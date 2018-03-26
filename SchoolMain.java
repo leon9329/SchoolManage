@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class SchoolMain {
-	static final String HOST_ID = "test";
+	static final String HOST_ID = "test";	//관리자 id and password
 	static final String HOST_PASSWROD = "123";
 	
 	StudentDAO student = new StudentDAO();
@@ -34,8 +34,8 @@ public class SchoolMain {
 				id = sc.nextLine();
 				System.out.println("비번 : ");
 				password = sc.nextLine();
-				if(main.student.CheckID(id)) {
-					//아이디는 맞았고 비번 조회할 차례
+				if(main.student.CheckID(id,password)) {
+					main.student.StudentView();
 				}
 			case "3":
 				break;
