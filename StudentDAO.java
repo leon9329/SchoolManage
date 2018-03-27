@@ -76,8 +76,8 @@ public class StudentDAO {
 				ApplicationClass(stuList.get(num));
 				break;
 			case "4":
-				
-				return;
+				ShowSubList(stuList.get(num));
+				break;
 			case "5":
 				return;
 			default:
@@ -265,7 +265,6 @@ public class StudentDAO {
 
 			int a = Integer.parseInt(n);
 
-			
 			if (a > subject.length) {
 				System.out.println("1 ~ " + subject.length + "선택");
 				continue;
@@ -288,6 +287,16 @@ public class StudentDAO {
 				}
 			}
 		}
+	}
+
+	void ShowSubList(StudentDTO student) {
+
+		if (!student.subject.isEmpty()) {
+			for (int i = 0; i < student.subject.size(); i++) {
+				System.out.println((i+1) + "." + student.subject.get(i));
+			}
+		}else
+			System.out.println("비어있음");
 	}
 
 	void showStudent(StudentDTO student) {
