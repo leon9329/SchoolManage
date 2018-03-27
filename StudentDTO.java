@@ -1,31 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+
 //Student DTO
 public class StudentDTO {
 	private String classOf; // 학번
 	private String name; // 이름
 	private String sex; // 성별
 	private String age; // 나이
-	private String privateCourse; // 좋아하는 과목
 	private String id;
-	private String password = "1111";
+	private String password = "a";
+	List<String> subject = new ArrayList<String>();
 	
 	StudentDTO(){};
 	
-	StudentDTO(String classOf, String name, String sex, String age, String privateCourse) {
+	StudentDTO(String classOf, String name, String sex, String age) {
 		this.classOf = classOf;
 		this.name = name;
 		this.sex = sex;
 		this.age = age;
-		this.privateCourse = privateCourse;
 
 	}
 	
-	StudentDTO(String id, String classOf, String name, String sex, String age, String privateCourse) {
+	StudentDTO(String id, String classOf, String name, String sex, String age) {
 		this.id = id;
 		this.classOf = classOf;
 		this.name = name;
 		this.sex = sex;
 		this.age = age;
-		this.privateCourse = privateCourse;
 		
 
 	}
@@ -50,9 +51,6 @@ public class StudentDTO {
 		this.age = age;
 	}
 
-	public void setPrivateCourse(String privateCourse) {
-		this.privateCourse = privateCourse;
-	}
 	
 	public void setPassword(String password) {
 		this.password = password;
@@ -78,9 +76,7 @@ public class StudentDTO {
 		return age;
 	}
 
-	public String getPrivateCouse() {
-		return privateCourse;
-	}
+	
 	
 	public String getPassword() {
 		return password;

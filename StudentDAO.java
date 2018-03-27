@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -11,15 +12,15 @@ public class StudentDAO {
 	int num; // get에서 얻어온 i값 저장
 
 	StudentDAO() {// 디폴트 학생 + id 디폴트 비번 = 1111
-		stuList.add(new StudentDTO("a", "1", "홍길동", "남", "20", "수학"));
+		stuList.add(new StudentDTO("a", "1", "홍길동", "남", "20"));
 		stuID.add("a");
-		stuList.add(new StudentDTO("b", "2", "정우성", "남", "26", "물리"));
+		stuList.add(new StudentDTO("b", "2", "정우성", "남", "26"));
 		stuID.add("b");
-		stuList.add(new StudentDTO("c", "3", "김현아", "여", "25", "과학"));
+		stuList.add(new StudentDTO("c", "3", "김현아", "여", "25"));
 		stuID.add("c");
-		stuList.add(new StudentDTO("d", "4", "김지원", "여", "24", "영어"));
+		stuList.add(new StudentDTO("d", "4", "김지원", "여", "24"));
 		stuID.add("d");
-		stuList.add(new StudentDTO("e", "5", "황우석", "여", "23", "국어"));
+		stuList.add(new StudentDTO("e", "5", "황우석", "여", "23"));
 		stuID.add("e");
 	}
 
@@ -69,11 +70,13 @@ public class StudentDAO {
 
 				break;
 			case "2":
+
 				break;
 			case "3":
+				ApplicationClass(stuList.get(num));
 				break;
 			case "4":
-				return ;
+				return;
 			default:
 				System.out.println("1~4번 선택하세요");
 			}
@@ -87,7 +90,7 @@ public class StudentDAO {
 				for (int i = 0; i < stuList.size(); i++) {
 					if (stuList.get(i).getID().equals(id) && stuList.get(i).getPassword().equals(password)) {
 						System.out.println("로그인 성공!");
-						num = i;
+						num = i;// 로그인 성공했을 때 stuList index를 num에 저장, 후에 모든 접근은 i로 한다.
 						return true;
 					}
 				}
@@ -104,7 +107,7 @@ public class StudentDAO {
 
 	void SelfUpdateStudent(StudentDTO student) { // 학생 스스로 정보수정
 		System.out.println("무엇을 수정하시겠습니까?");
-		System.out.println("1.학번 2.이름 3.나이 4.좋아하는 과목 5.비밀번호 변경");
+		System.out.println("1.학번 2.이름 3.나이 4.비밀번호 변경");
 		String n = sc.nextLine();
 		switch (n) {
 		case "1":
@@ -122,12 +125,8 @@ public class StudentDAO {
 			student.setAge(sc.nextLine());
 			System.out.println("수정 완료");
 			break;
+
 		case "4":
-			System.out.println("좋아하는 과목 : ");
-			student.setPrivateCourse(sc.nextLine());
-			System.out.println("수정 완료");
-			break;
-		case "5":
 			ChangePassword(student);
 			break;
 		default:
@@ -169,10 +168,7 @@ public class StudentDAO {
 		System.out.print("나이 : ");
 		String age = sc.nextLine();
 
-		System.out.print("좋아하는 과목 : ");
-		String privateSubject = sc.nextLine();
-
-		stuList.add(new StudentDTO(classOf, name, sex, age, privateSubject));
+		stuList.add(new StudentDTO(classOf, name, sex, age));
 	}
 
 	boolean deleteStudent() { // 학생 삭제 메소드
@@ -211,7 +207,7 @@ public class StudentDAO {
 
 	void UpdateStudent(StudentDTO student) { // 학생 수정
 		System.out.println("무엇을 수정하시겠습니까?");
-		System.out.println("1.학번 2.이름 3.성별 4.나이 5.좋아하는 과목");
+		System.out.println("1.학번 2.이름 3.성별 4.나이 ");
 		String s = sc.nextLine();
 		switch (s) {
 		case "1":
@@ -237,13 +233,40 @@ public class StudentDAO {
 			student.setAge(sc.nextLine());
 			System.out.println("수정 완료.");
 			break;
-		case "5":
-			System.out.println("가장 좋아하는 과목 : ");
-			student.setPrivateCourse(sc.nextLine());
-			System.out.println("수정 완료.");
-			break;
+
 		default:
-			System.out.println("1~5번중 선택하세요.");
+			System.out.println("1~4번중 선택하세요.");
+
+		}
+
+	}
+
+	void ApplicationClass(StudentDTO student) {
+		// SubjectList subList = new SubjectList();
+		String[] subject = SubjectList.subjects;
+		List<String> subList = student.subject;
+		System.out.println("수강신청을 원하는 과목의 번호를 선택해주세요.");
+		System.out.println("---------------------");
+		for (int i = 0; i < subject.length; i++) {
+			System.out.println((i + 1) + "." + subject[i]);
+		}
+		System.out.println("---------------------");
+		
+		while (true) {
+			int n = sc.nextInt();
+			sc.next();
+
+			if (subList.isEmpty()) {
+				subList.add(subject[n]); // 과목 리스트가 비어있으면 과목 추가
+			} else {
+				for (int i = 0; i < subList.size(); i++) {
+					if (subList.get(i).equals(subject[i])) {
+						System.out.println("이미 수강신청 되었습니다.");
+						return ;
+					}
+				}
+				subList.add(subject[n]); 
+			}
 
 		}
 
@@ -251,6 +274,6 @@ public class StudentDAO {
 
 	void showStudent(StudentDTO student) {
 		System.out.println(student.getClassOf() + "	" + student.getName() + "	" + student.getSex() + "	"
-				+ student.getAge() + "	" + student.getPrivateCouse());
+				+ student.getAge());
 	}
 }
