@@ -62,7 +62,7 @@ public class StudentDAO {
 
 	void StudentView() {
 		while (true) {
-			System.out.println("1.정보 수정 2.게시판 3.수강신청 4.로그아웃 ");
+			System.out.println("1.정보 수정 2.게시판 3.수강신청 4.과목 리스트 5.로그아웃 ");
 			String s = sc.nextLine();
 			switch (s) {
 			case "1":
@@ -76,9 +76,12 @@ public class StudentDAO {
 				ApplicationClass(stuList.get(num));
 				break;
 			case "4":
+				
+				return;
+			case "5":
 				return;
 			default:
-				System.out.println("1~4번 선택하세요");
+				System.out.println("1~5번 선택하세요");
 			}
 		}
 	}
@@ -243,33 +246,48 @@ public class StudentDAO {
 
 	void ApplicationClass(StudentDTO student) {
 		// SubjectList subList = new SubjectList();
-		String[] subject = SubjectList.subjects;
-		List<String> subList = student.subject;
+		String[] subject = SubjectList.subjects; // 과목 목록
+		List<String> subList = student.subject; // 신청한 과목 리스트
 		System.out.println("수강신청을 원하는 과목의 번호를 선택해주세요.");
 		System.out.println("---------------------");
 		for (int i = 0; i < subject.length; i++) {
 			System.out.println((i + 1) + "." + subject[i]);
 		}
+		System.out.println("수강신청 끝내기 : p");
 		System.out.println("---------------------");
-		
+
 		while (true) {
-			int n = sc.nextInt();
-			sc.next();
+			System.out.print("번호 : ");
+			String n = sc.nextLine();
+
+			if (n.equals("p"))
+				break;
+
+			int a = Integer.parseInt(n);
+
+			
+			if (a > subject.length) {
+				System.out.println("1 ~ " + subject.length + "선택");
+				continue;
+			}
+			boolean overlap = true;
 
 			if (subList.isEmpty()) {
-				subList.add(subject[n]); // 과목 리스트가 비어있으면 과목 추가
+				subList.add(subject[a - 1]); // 과목 리스트가 비어있으면 과목 추가
+				System.out.println(subject[a - 1] + "추가.(비어있음)");
 			} else {
 				for (int i = 0; i < subList.size(); i++) {
-					if (subList.get(i).equals(subject[i])) {
-						System.out.println("이미 수강신청 되었습니다.");
-						return ;
+					if (subList.get(i).equals(subject[a - 1])) {
+						overlap = false;
+						System.out.println("중복 됨");
 					}
 				}
-				subList.add(subject[n]); 
+				if (overlap == true) {
+					subList.add(subject[a - 1]);
+					System.out.println(subject[a - 1] + "추가.");
+				}
 			}
-
 		}
-
 	}
 
 	void showStudent(StudentDTO student) {
