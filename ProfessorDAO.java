@@ -13,44 +13,6 @@ public class ProfessorDAO {
 		proList.add(new ProfessorDTO("김관진","남","51","체육"));
 		proList.add(new ProfessorDTO("오수미","여","52","컴퓨터"));
 		}
-	
-	void ProfessorBoard() {	//교수 관리
-
-
-		while (true) {
-			System.out.println("1.교수 추가 2.교수 리스트 3.교수 삭제 4.교수진 수정 5.뒤로");
-			String n = sc.nextLine();
-
-			switch (n) {
-			case "1":
-				AddProfessor();
-				break;
-			case "2":
-				System.out.println("이름	성별	나이	전공");
-				System.out.println("------------------------------");
-				for (int i = 0; i < proList.size(); i++) 
-					ShowProfessors(proList.get(i));
-				System.out.println("------------------------------");
-				System.out.println();
-				break;
-			case "3":
-				if (deleteProfessor())
-					System.out.println("삭제 완료");
-				else
-					System.out.println("삭제 실패");
-				break;
-			case "4":
-				CheckProfessor();
-				break;
-			case "5":
-				return;
-			}
-		}
-
-	}
-	
-
-	
 
 	void AddProfessor() { // 교수 추가 메소드
 

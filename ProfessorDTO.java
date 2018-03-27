@@ -1,5 +1,7 @@
 
 public class ProfessorDTO {
+	private String id = "a";
+	private String password = "a";
 	private String name;
 	private String sex;
 	private String age;
@@ -15,6 +17,14 @@ public class ProfessorDTO {
 		this.age = age;
 		this.subject = subject;
 
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	public void setName(String name) {
@@ -47,5 +57,9 @@ public class ProfessorDTO {
 
 	public String getSubject() {
 		return subject;
+	}
+	
+	public String getId() {
+		return id;
 	}
 }
