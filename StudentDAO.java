@@ -26,39 +26,7 @@ public class StudentDAO {
 
 	Scanner sc = new Scanner(System.in);
 
-	void StudentBoard() {// 관리자가 학생 관리
 
-		while (true) {
-			System.out.println("1.학생 추가 2.학생 리스트 3.학생 삭제 4.학생 정보 수정 5.뒤로");
-			String n = sc.nextLine();
-
-			switch (n) {
-			case "1":
-				AddStudent();
-				break;
-			case "2":
-				System.out.println("학번	이름	성별	나이	좋아하는과목");
-				System.out.println("------------------------------------------");
-				for (int i = 0; i < stuList.size(); i++)
-					showStudent(stuList.get(i));
-				System.out.println("------------------------------------------");
-				System.out.println();
-				break;
-			case "3":
-				if (deleteStudent())
-					System.out.println("삭제 완료");
-				else
-					System.out.println("삭제 실패");
-				break;
-			case "4":
-				CheckStudent();
-				break;
-			case "5":
-				return;
-			}
-		}
-
-	}
 
 	void StudentView() {
 		while (true) {
@@ -244,7 +212,7 @@ public class StudentDAO {
 
 	}
 
-	void ApplicationClass(StudentDTO student) {
+	void ApplicationClass(StudentDTO student) {		//수강신청
 		// SubjectList subList = new SubjectList();
 		String[] subject = SubjectList.subjects; // 과목 목록
 		List<String> subList = student.subject; // 신청한 과목 리스트
@@ -301,6 +269,6 @@ public class StudentDAO {
 
 	void showStudent(StudentDTO student) {
 		System.out.println(student.getClassOf() + "	" + student.getName() + "	" + student.getSex() + "	"
-				+ student.getAge());
+				+ student.getAge() + "	" + student.subject.size() + "과목");
 	}
 }
