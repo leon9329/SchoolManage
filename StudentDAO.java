@@ -37,7 +37,7 @@ public class StudentDAO {
 				SelfUpdateStudent(stuList.get(num));
 				break;
 			case "2":
-				SchoolMain.board.ShowWriteList();
+				SchoolMain.board.ShowWriteList(num);
 				break;
 			case "3":
 				ApplicationClass(stuList.get(num));
