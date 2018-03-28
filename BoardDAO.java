@@ -30,7 +30,7 @@ public class BoardDAO {
 				Read();
 				break;
 			case "3":
-				//글 수정 메소드
+				CheckIdName(num);
 				break;
 			case "4":
 				return ;
@@ -65,7 +65,52 @@ public class BoardDAO {
 				+ boardList.get(s-1).getID() + ")");
 		System.out.println("내용 : " + boardList.get(s-1).getWrite());
 		System.out.println("--------------------------------------");
+
+	}
+	
+	void CheckIdName(int num) {	//아이디와 이름 매칭
+		System.out.print("글 번호 ->");
+		String ss = sc.nextLine();
+		int s = Integer.parseInt(ss);
 		
+		System.out.print("id -> ");
+		String id = sc.nextLine();
+		
+		System.out.print("이름 -> ");
+		String name = sc.nextLine();
+		
+		if(boardList.get(s-1).getID().equals(id)) {
+			if(name.equals((SchoolMain.student.stuList.get(num).getName()))) {
+				UpdateWrite(s-1);
+			}else
+				System.out.println("name error");
+		}else {
+			System.out.println("ID error");
+		}
+		
+	}
+	
+	void UpdateWrite(int s) {
+		System.out.println("1.제목 수정 2.내용 수정 ");
+		String n = sc.nextLine();
+		switch(n) {
+		case "1":
+			System.out.println("현제 제목 -> " + boardList.get(s).getTitle());
+			System.out.print("수정할 제목 -> ");
+			String title = sc.nextLine();
+			boardList.get(s).setTitle(title);
+			System.out.println("수정완료");
+			break;
+		case "2":
+			System.out.print("수정할 내용 -> ");
+			String write = sc.nextLine();
+			boardList.get(s).setWrite(write);
+			System.out.println("수정완료");
+			break;
+		
+		default :
+			return ;
+		}
 	}
 	
 }

@@ -19,7 +19,7 @@ public class BoardDTO {	//°Ô½ÃÆÇ
 	String getTitle() {
 		return title;
 	}
-	void setWite(String wite) {
+	void setWrite(String write) {
 		this.write = write;
 	}
 	
