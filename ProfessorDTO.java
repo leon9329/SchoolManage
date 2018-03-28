@@ -42,6 +42,14 @@ public class ProfessorDTO {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+	
+	public String getID() {
+		return id;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
 
 	public String getName() {
 		return name;

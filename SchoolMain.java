@@ -25,6 +25,7 @@ public class SchoolMain {
 			String a = sc.nextLine();
 			
 			switch(a) {
+			
 			case "1":
 				System.out.println("관리자 아이디 : ");
 				id = sc.nextLine();
@@ -43,7 +44,15 @@ public class SchoolMain {
 				if(student.CheckID(id,password)) {
 					student.StudentView();
 				}
+				break;
 			case "3":
+				System.out.println("아이디 : ");
+				id = sc.nextLine();
+				System.out.println("비번 : ");
+				password = sc.nextLine();
+				if(professor.CheckID(id,password)) {
+					professor.ProfessorView();
+				}
 				break;
 			default:
 				System.out.println("종료 되었습니다.");
