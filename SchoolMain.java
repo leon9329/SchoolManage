@@ -1,15 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SchoolMain {
 	static final String HOST_ID = "test";	//관리자 id and password
 	static final String HOST_PASSWROD = "123";
 	
-	static StudentDAO student = new StudentDAO();
-	static ProfessorDAO professor = new ProfessorDAO();
+	static StudentDAO student = new StudentDAO();//학생DAO
+	static ProfessorDAO professor = new ProfessorDAO();//교수DAO
+	static BoardDAO board = new BoardDAO();
+	
 	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		
 	
 		ManagerMethod manager = new ManagerMethod();

@@ -9,6 +9,7 @@ public class StudentDTO {
 	private String age; // ³ªÀÌ
 	private String id;
 	private String password = "a";
+	
 	List<String> subject = new ArrayList<String>();
 	
 	StudentDTO(){};
