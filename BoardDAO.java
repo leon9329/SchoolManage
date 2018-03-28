@@ -14,21 +14,20 @@ public class BoardDAO {
 	}
 
 	void ShowWriteList(int num) {//num은 객체의 인덱스.
+		
+		ShowList();
+		
 		while (true) {
-			for (int i = 0; i < boardList.size(); i++) {
-				System.out.println((i + 1) + ". 제목 : " + boardList.get(i).getTitle() + "	(작성자 : "
-						+ boardList.get(i).getID() + ")");
-				System.out.println("--------------------------");
-			}
-			System.out.println("1.글 작성 2.글 읽기 3.글 수정 4.뒤로");
-			System.out.println("->(숫자입력)");
+			
+			System.out.println("(1)글 작성 (2)글 읽기 (3)글 수정 (4)뒤로");
+			System.out.print("->");
 			String s = sc.nextLine();
 			switch(s) {
 			case "1":
-				write(num);
+				Write(num);
 				break;
 			case "2":
-				//글 읽기 메소드
+				Read();
 				break;
 			case "3":
 				//글 수정 메소드
@@ -41,12 +40,32 @@ public class BoardDAO {
 		}
 	}
 	
-	void write(int num) {
+	void ShowList() {
+		for (int i = 0; i < boardList.size(); i++) {
+			System.out.println((i + 1) + ". 제목 : " + boardList.get(i).getTitle() + "	(작성자 : "
+					+ boardList.get(i).getID() + ")");
+			System.out.println("--------------------------");
+		}
+	}
+	
+	void Write(int num) {
 		System.out.print("제목 : ");
 		String title = sc.nextLine();
 		System.out.println("내용 : ");
 		String write = sc.nextLine();
 		boardList.add(new BoardDTO(title,write,(SchoolMain.student.stuList.get(num).getID())));
+	}
+	
+	void Read() {
+		System.out.print("글 번호 -> ");
+		String ss = sc.nextLine();
+		int s = Integer.parseInt(ss);
+		System.out.println("--------------------------------------");
+		System.out.println("제목 : " + boardList.get(s-1).getTitle() + "	(작성자 : "
+				+ boardList.get(s-1).getID() + ")");
+		System.out.println("내용 : " + boardList.get(s-1).getWrite());
+		System.out.println("--------------------------------------");
+		
 	}
 	
 }
