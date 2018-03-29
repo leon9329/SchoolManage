@@ -13,24 +13,24 @@ public class BoardDAO {
 		boardList.add(new BoardDTO("힘내라", "고마워고마워고마워고마워고마워고마워고마워고마워고마워고마워" + "고마워고마워고마워고마워", "a"));
 	}
 
-	void ShowWriteList(int num) {//num은 객체의 인덱스.
+	void ShowWriteList(ArrayList personList, int index) {//num은 객체의 인덱스.
 		
-		ShowList();
 		
 		while (true) {
+			ShowList();
 			
 			System.out.println("(1)글 작성 (2)글 읽기 (3)글 수정 (4)뒤로");
 			System.out.print("->");
 			String s = sc.nextLine();
 			switch(s) {
 			case "1":
-				Write(num);
+				Write(personList,index);
 				break;
 			case "2":
 				Read();
 				break;
 			case "3":
-				CheckIdName(num);
+				CheckIdName(index);
 				break;
 			case "4":
 				return ;
@@ -48,12 +48,12 @@ public class BoardDAO {
 		}
 	}
 	
-	void Write(int num) {
+	void Write(ArrayList personList, int index) {
 		System.out.print("제목 : ");
 		String title = sc.nextLine();
 		System.out.println("내용 : ");
 		String write = sc.nextLine();
-		boardList.add(new BoardDTO(title,write,(SchoolMain.student.stuList.get(num).getID())));
+		boardList.add(new BoardDTO(title,write,//객체)));
 	}
 	
 	void Read() {

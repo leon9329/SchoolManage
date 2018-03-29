@@ -57,6 +57,8 @@ public class ProfessorDAO {
 			case "2":
 				break;
 			case "3":
+				SchoolMain.board.ShowWriteList(num);
+				
 				break;
 			case "4":
 				return ;
