@@ -24,7 +24,7 @@ public class BoardDAO {
 			String s = sc.nextLine();
 			switch(s) {
 			case "1":
-				Write(personList,index);
+				
 				break;
 			case "2":
 				Read();
@@ -48,12 +48,23 @@ public class BoardDAO {
 		}
 	}
 	
-	void Write(ArrayList personList, int index) {
+	
+	
+	
+	void BoardWrite(StudentDTO student) {//학생이 게시판에 글 남길때
 		System.out.print("제목 : ");
 		String title = sc.nextLine();
 		System.out.println("내용 : ");
 		String write = sc.nextLine();
-		boardList.add(new BoardDTO(title,write,//객체)));
+		boardList.add(new BoardDTO(title,write,student.getID()));
+	}
+	
+	void BoardWrite(ProfessorDTO professor) {//교수가 게시판에 글 남길때
+		System.out.print("제목 : ");
+		String title = sc.nextLine();
+		System.out.println("내용 : ");
+		String write = sc.nextLine();
+		boardList.add(new BoardDTO(title,write,professor.getID()));
 	}
 	
 	void Read() {

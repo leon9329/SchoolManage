@@ -37,7 +37,7 @@ public class StudentDAO {
 				SelfUpdateStudent(stuList.get(num));
 				break;
 			case "2":
-				SchoolMain.board.ShowWriteList(num);
+				SchoolMain.board.ShowWriteList(stuList,num);
 				break;
 			case "3":
 				ApplicationClass(stuList.get(num));
@@ -270,4 +270,6 @@ public class StudentDAO {
 		System.out.println(student.getClassOf() + "	" + student.getName() + "	" + student.getSex() + "	"
 				+ student.getAge() + "	" + student.subject.size() + "°ú¸ñ");
 	}
+	
+	
 }
