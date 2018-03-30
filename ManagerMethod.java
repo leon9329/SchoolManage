@@ -8,7 +8,7 @@ public class ManagerMethod {
 
 	void ManagerView() { // 관리자모드 화면
 		while (true) {
-			System.out.println("1.학생 관리 2.교수 관리 3.로그아웃 ");
+			System.out.println("1.학생 관리 2.교수 관리 3.로그아웃 (관리자 모드)");
 			String n = sc.nextLine();
 
 			switch (n) {
@@ -27,6 +27,7 @@ public class ManagerMethod {
 	void StudentBoard() {// 관리자가 학생 관리
 
 		while (true) {
+			
 			System.out.println("1.학생 추가 2.학생 리스트 3.학생 삭제 4.학생 정보 수정 5.뒤로");
 			String n = sc.nextLine();
 
@@ -90,5 +91,10 @@ public class ManagerMethod {
 			}
 		}
 
+	}
+
+	static void clearScreen() {
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
 	}
 }
