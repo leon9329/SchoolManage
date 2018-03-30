@@ -84,19 +84,19 @@ public class BoardDAO {
 		String ss = sc.nextLine();
 		int s = Integer.parseInt(ss);
 		
-		System.out.print("id -> ");
-		String id = sc.nextLine();
+//		System.out.print("id -> ");
+//		String id = sc.nextLine();
 		
-		System.out.print("이름 -> ");
-		String name = sc.nextLine();
+		System.out.print("비밀번호 -> ");
+		String password = sc.nextLine();
 		
-		if(boardList.get(s-1).getID().equals(id)) {
-			if(name.equals((person.getName()))) {
+		if(boardList.get(s-1).getID().equals(person.getID())) {
+			if(password.equals((person.getPassword()))) {
 				UpdateWrite(s-1);
 			}else
-				System.out.println("name error");
+				System.out.println("password error");
 		}else {
-			System.out.println("ID error");
+			System.out.println("작성자만 수정 가능.");
 		}
 		
 	}

@@ -1,7 +1,7 @@
 
 public class ProfessorDTO implements PersonDTO{
-	private String id = "a";
-	private String password = "a";
+	private String id;
+	private String password = "aa";
 	private String name;
 	private String sex;
 	private String age;
@@ -12,6 +12,15 @@ public class ProfessorDTO implements PersonDTO{
 	}
 
 	ProfessorDTO(String name, String sex, String age, String subject) {
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.subject = subject;
+
+	}
+	
+	ProfessorDTO(String id, String name, String sex, String age, String subject) {
+		this.id = id;
 		this.name = name;
 		this.sex = sex;
 		this.age = age;

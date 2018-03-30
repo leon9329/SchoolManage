@@ -11,7 +11,7 @@ public class ProfessorDAO {
 	int num; // 객체 인덱스
 
 	ProfessorDAO() {
-		proList.add(new ProfessorDTO("남진", "남", "50", "수학"));
+		proList.add(new ProfessorDTO("aa","홍길동", "남", "50", "수학"));
 		SchoolMain.IDList.add("aa");
 		proList.add(new ProfessorDTO("장발산", "남", "55", "과학"));
 		SchoolMain.IDList.add("bb");
@@ -24,32 +24,22 @@ public class ProfessorDAO {
 	}
 
 	boolean CheckID(String id, String password) { // 로그인시 id, password 확인
-		Iterator<String> iterator = SchoolMain.IDList.iterator();
-		while (iterator.hasNext()) {
-			if (id.equals(iterator.next())) {
-				for (int i = 0; i < proList.size(); i++) {
-					if (proList.get(i).getID().equals(id) && proList.get(i).getPassword().equals(password)) {
-						System.out.println("로그인 성공!");
-						num = i;// 로그인 성공했을 때 stuList index를 num에 저장, 후에 모든 접근은 i로 한다.
-						return true;
-					}
-				}
-				System.out.println("비밀번호 오류");
-				return false;
-			} else {
-				System.out.println("id가 잘못됬습니다.");
-				return false;
+		for (int i = 0; i < proList.size(); i++) {
+			if (proList.get(i).getID().equals(id) && proList.get(i).getPassword().equals(password)) {
+				System.out.println("로그인 성공!");
+				num = i;// 로그인 성공했을 때 stuList index를 num에 저장, 후에 모든 접근은 i로 한다.
+				return true;
 			}
 		}
+		System.out.println("로그인 실패");
 		return false;
-
 	}
 
 	void ProfessorView() {
 		while (true) {
 			System.out.println("1.정보 수정 2.지도학생 정보 3.게시판  4.로그아웃 ");
 			String s = sc.nextLine();
-			switch(s) {
+			switch (s) {
 			case "1":
 				UpdateProfessor(proList.get(num));
 				break;
@@ -57,12 +47,12 @@ public class ProfessorDAO {
 				break;
 			case "3":
 				SchoolMain.board.ShowWriteList(proList.get(num));
-				
+
 				break;
 			case "4":
-				return ;
-				default:
-					System.out.println("1~4번 선택");
+				return;
+			default:
+				System.out.println("1~4번 선택");
 			}
 		}
 	}

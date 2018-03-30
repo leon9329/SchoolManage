@@ -8,4 +8,12 @@ public interface PersonDTO {
 	String getID();
 	
 	String getName();
+	
+	String getPassword();
+
+	String getAge();
+	
+	String getSex();
+	
+	
 }
