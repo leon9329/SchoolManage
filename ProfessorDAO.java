@@ -8,24 +8,23 @@ import java.util.Set;
 public class ProfessorDAO {
 	ArrayList<ProfessorDTO> proList = new ArrayList<>();
 	Scanner sc = new Scanner(System.in);
-	Set<String> proID = new HashSet<>();
 	int num; // 객체 인덱스
 
 	ProfessorDAO() {
 		proList.add(new ProfessorDTO("남진", "남", "50", "수학"));
-		proID.add("a");
+		SchoolMain.IDList.add("aa");
 		proList.add(new ProfessorDTO("장발산", "남", "55", "과학"));
-		proID.add("b");
+		SchoolMain.IDList.add("bb");
 		proList.add(new ProfessorDTO("오나미", "여", "53", "영어"));
-		proID.add("c");
+		SchoolMain.IDList.add("cc");
 		proList.add(new ProfessorDTO("김관진", "남", "51", "체육"));
-		proID.add("d");
+		SchoolMain.IDList.add("dd");
 		proList.add(new ProfessorDTO("오수미", "여", "52", "컴퓨터"));
-		proID.add("e");
+		SchoolMain.IDList.add("ee");
 	}
 
 	boolean CheckID(String id, String password) { // 로그인시 id, password 확인
-		Iterator<String> iterator = proID.iterator();
+		Iterator<String> iterator = SchoolMain.IDList.iterator();
 		while (iterator.hasNext()) {
 			if (id.equals(iterator.next())) {
 				for (int i = 0; i < proList.size(); i++) {
@@ -57,7 +56,7 @@ public class ProfessorDAO {
 			case "2":
 				break;
 			case "3":
-				//SchoolMain.board.ShowWriteList(num);
+				SchoolMain.board.ShowWriteList(proList.get(num));
 				
 				break;
 			case "4":

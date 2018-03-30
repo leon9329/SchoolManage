@@ -8,25 +8,22 @@ import java.util.Set;
 //Student DAO
 public class StudentDAO {
 	ArrayList<StudentDTO> stuList = new ArrayList<StudentDTO>();
-	Set<String> stuID = new HashSet<>();
 	int num; // get에서 얻어온 i값 저장
 
 	StudentDAO() {// 디폴트 학생 + id 디폴트 비번 = 1111
 		stuList.add(new StudentDTO("a", "1", "홍길동", "남", "20"));
-		stuID.add("a");
+		SchoolMain.IDList.add("a");
 		stuList.add(new StudentDTO("b", "2", "정우성", "남", "26"));
-		stuID.add("b");
+		SchoolMain.IDList.add("b");
 		stuList.add(new StudentDTO("c", "3", "김현아", "여", "25"));
-		stuID.add("c");
+		SchoolMain.IDList.add("c");
 		stuList.add(new StudentDTO("d", "4", "김지원", "여", "24"));
-		stuID.add("d");
+		SchoolMain.IDList.add("d");
 		stuList.add(new StudentDTO("e", "5", "황우석", "여", "23"));
-		stuID.add("e");
+		SchoolMain.IDList.add("e");
 	}
 
 	Scanner sc = new Scanner(System.in);
-
-
 
 	void StudentView() {
 		while (true) {
@@ -37,7 +34,7 @@ public class StudentDAO {
 				SelfUpdateStudent(stuList.get(num));
 				break;
 			case "2":
-				SchoolMain.board.ShowWriteList(stuList,num);
+				SchoolMain.board.ShowWriteList(stuList.get(num));
 				break;
 			case "3":
 				ApplicationClass(stuList.get(num));
@@ -53,28 +50,31 @@ public class StudentDAO {
 		}
 	}
 
+	/*
+	 * boolean CheckID(String id, String password) { // 로그인시 id, password 확인
+	 * Iterator<String> iterator = SchoolMain.IDList.iterator(); while
+	 * (iterator.hasNext()) { if (id.equals(iterator.next())) { for (int i = 0; i <
+	 * stuList.size(); i++) { if (stuList.get(i).getID().equals(id) &&
+	 * stuList.get(i).getPassword().equals(password)) {
+	 * System.out.println("로그인 성공!"); num = i;// 로그인 성공했을 때 stuList index를 num에 저장,
+	 * 후에 모든 접근은 i로 한다. return true; } } System.out.println("비밀번호 오류"); return
+	 * false; } else { System.out.println("id가 잘못됬습니다."); return false; } } return
+	 * false;
+	 * 
+	 * }
+	 */
 	boolean CheckID(String id, String password) { // 로그인시 id, password 확인
-		Iterator<String> iterator = stuID.iterator();
-		while (iterator.hasNext()) {
-			if (id.equals(iterator.next())) {
-				for (int i = 0; i < stuList.size(); i++) {
-					if (stuList.get(i).getID().equals(id) && stuList.get(i).getPassword().equals(password)) {
-						System.out.println("로그인 성공!");
-						num = i;// 로그인 성공했을 때 stuList index를 num에 저장, 후에 모든 접근은 i로 한다.
-						return true;
-					}
-				}
-				System.out.println("비밀번호 오류");
-				return false;
-			} else {
-				System.out.println("id가 잘못됬습니다.");
-				return false;
+		for (int i = 0; i < stuList.size(); i++) {
+			if (stuList.get(i).getID().equals(id) && stuList.get(i).getPassword().equals(password)) {
+				System.out.println("로그인 성공!");
+				num = i;// 로그인 성공했을 때 stuList index를 num에 저장, 후에 모든 접근은 i로 한다.
+				return true;
 			}
 		}
+		System.out.println("로그인 실패");
 		return false;
-
 	}
-
+	
 	void SelfUpdateStudent(StudentDTO student) { // 학생 스스로 정보수정
 		System.out.println("무엇을 수정하시겠습니까?");
 		System.out.println("1.학번 2.이름 3.나이 4.비밀번호 변경");
@@ -211,7 +211,7 @@ public class StudentDAO {
 
 	}
 
-	void ApplicationClass(StudentDTO student) {		//수강신청
+	void ApplicationClass(StudentDTO student) { // 수강신청
 		// SubjectList subList = new SubjectList();
 		String[] subject = SubjectList.subjects; // 과목 목록
 		List<String> subList = student.subject; // 신청한 과목 리스트
@@ -260,9 +260,9 @@ public class StudentDAO {
 
 		if (!student.subject.isEmpty()) {
 			for (int i = 0; i < student.subject.size(); i++) {
-				System.out.println((i+1) + "." + student.subject.get(i));
+				System.out.println((i + 1) + "." + student.subject.get(i));
 			}
-		}else
+		} else
 			System.out.println("비어있음");
 	}
 
@@ -270,6 +270,5 @@ public class StudentDAO {
 		System.out.println(student.getClassOf() + "	" + student.getName() + "	" + student.getSex() + "	"
 				+ student.getAge() + "	" + student.subject.size() + "과목");
 	}
-	
-	
+
 }

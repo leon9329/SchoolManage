@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Student DTO
-public class StudentDTO {
+public class StudentDTO implements PersonDTO {
 	private String classOf; // 학번
 	private String name; // 이름
 	private String sex; // 성별

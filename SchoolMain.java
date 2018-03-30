@@ -1,11 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class SchoolMain {
 	static final String HOST_ID = "test";	//관리자 id and password
 	static final String HOST_PASSWROD = "123";
 	
+	static Set<String> IDList = new HashSet<String>();
 	static StudentDAO student = new StudentDAO();//학생DAO
 	static ProfessorDAO professor = new ProfessorDAO();//교수DAO
 	static BoardDAO board = new BoardDAO();
@@ -59,9 +60,11 @@ public class SchoolMain {
 					professor.ProfessorView();
 				}
 				break;
-			default:
+			case "4":
 				System.out.println("종료 되었습니다.");
-				return ;	
+				return ;
+				default :
+					System.out.println("잘못 눌렀습니다.");
 			}
 		}
 	}

@@ -13,7 +13,7 @@ public class BoardDAO {
 		boardList.add(new BoardDTO("힘내라", "고마워고마워고마워고마워고마워고마워고마워고마워고마워고마워" + "고마워고마워고마워고마워", "a"));
 	}
 
-	void ShowWriteList(ArrayList personList, int index) {//num은 객체의 인덱스.
+	void ShowWriteList(PersonDTO person) {//num은 객체의 인덱스.
 		
 		
 		while (true) {
@@ -24,13 +24,13 @@ public class BoardDAO {
 			String s = sc.nextLine();
 			switch(s) {
 			case "1":
-				
+				BoardWrite(person);
 				break;
 			case "2":
 				Read();
 				break;
 			case "3":
-				CheckIdName(index);
+				CheckIdName(person);
 				break;
 			case "4":
 				return ;
@@ -51,21 +51,21 @@ public class BoardDAO {
 	
 	
 	
-	void BoardWrite(StudentDTO student) {//학생이 게시판에 글 남길때
+	void BoardWrite(PersonDTO person) {//학생이 게시판에 글 남길때
 		System.out.print("제목 : ");
 		String title = sc.nextLine();
 		System.out.println("내용 : ");
 		String write = sc.nextLine();
-		boardList.add(new BoardDTO(title,write,student.getID()));
+		boardList.add(new BoardDTO(title,write,person.getID()));
 	}
 	
-	void BoardWrite(ProfessorDTO professor) {//교수가 게시판에 글 남길때
-		System.out.print("제목 : ");
-		String title = sc.nextLine();
-		System.out.println("내용 : ");
-		String write = sc.nextLine();
-		boardList.add(new BoardDTO(title,write,professor.getID()));
-	}
+//	void BoardWrite(ProfessorDTO professor) {//교수가 게시판에 글 남길때
+//		System.out.print("제목 : ");
+//		String title = sc.nextLine();
+//		System.out.println("내용 : ");
+//		String write = sc.nextLine();
+//		boardList.add(new BoardDTO(title,write,professor.getID()));
+//	}
 	
 	void Read() {
 		System.out.print("글 번호 -> ");
@@ -79,7 +79,7 @@ public class BoardDAO {
 
 	}
 	
-	void CheckIdName(int num) {	//아이디와 이름 매칭
+	void CheckIdName(PersonDTO person) {	//아이디와 이름 매칭
 		System.out.print("글 번호 ->");
 		String ss = sc.nextLine();
 		int s = Integer.parseInt(ss);
@@ -91,7 +91,7 @@ public class BoardDAO {
 		String name = sc.nextLine();
 		
 		if(boardList.get(s-1).getID().equals(id)) {
-			if(name.equals((SchoolMain.student.stuList.get(num).getName()))) {
+			if(name.equals((person.getName()))) {
 				UpdateWrite(s-1);
 			}else
 				System.out.println("name error");

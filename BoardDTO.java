@@ -33,4 +33,5 @@ public class BoardDTO {	//°Ô½ÃÆÇ
 	String getID() {
 		return ID;
 	}
+	
 }

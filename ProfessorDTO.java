@@ -1,5 +1,5 @@
 
-public class ProfessorDTO {
+public class ProfessorDTO implements PersonDTO{
 	private String id = "a";
 	private String password = "a";
 	private String name;
