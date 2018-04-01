@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 //Student DTO
 public class StudentDTO {
 	private String classOf; // 학번
@@ -7,6 +10,9 @@ public class StudentDTO {
 	private String privateCourse; // 좋아하는 과목
 	private String id;
 	private String password = "1111";
+	private List<String> subjectList = new ArrayList<String>();
+	String[] subjects = {"수학","영어","컴퓨터","체육","사회","과학","음악"};
+	
 	
 	StudentDTO(){};
 	
