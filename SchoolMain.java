@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-
+//동기화 테스트중
 public class SchoolMain {
 	static final String HOST_ID = "test";	//관리자 id and password
 	static final String HOST_PASSWROD = "123";
