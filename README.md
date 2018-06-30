@@ -1,2 +1,2 @@
 # SchoolManage
-java와 oracle을 사용하여 간단한 crud
+java를 사용한 학사관리 프로그램
